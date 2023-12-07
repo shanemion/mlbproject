@@ -1,70 +1,17 @@
-# Getting Started with Create React App
+# Pitch To Contact
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An extra-credit project I procrastinated for Stanford's CS109, Probability for Computer Scientists. Made in 11 hours. 
 
-## Available Scripts
+Utilizes the logistic regression machine learning algorithm on a bunch of pitcher related data. Takes into account pitcher arm slot (release position), with a bunch of other happy things found here: 
+'release_speed', 'release_spin_rate', 'release_pos_x', 'release_pos_z', 
+        'pfx_x', 'pfx_z', 'plate_x', 'plate_z', 'zone'
 
-In the project directory, you can run:
+In order, it's pitch velocity, pitch spin rate, the x position of where the ball was released out of the pitchers hand from relative to the catcher's view with the middle of home plate being 0, the height of the ball relative to the catcher, how much right and left movement there is on each pitch from throw to catch, where it crosses the plate left/right and height, and what quadrant (1-9) of the strike zone it was. 
 
-### `npm start`
+The project has hard-coded thetas at LR=.001 and S=1000. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Some things that were coded up but were not able to be added to the final project were my usage of Naive Bayes to classify out or homerun based on the type of pitch thrown, but the Flask endpoint containing this should work properly if you wanted to call it manually in the terminal. Additionally, I linked all of this together with React amongst a CSV I put together myself using baseball savant. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Check out the link to play around with it and see the cheeky little animation arm animation that nearly caused me to submit late!!
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Check out the little write up here: https://docs.google.com/document/d/15V36_1oZefOL_Mwe3EO1pxD1ev5wvPnWhFu_6ySuRLY/edit?usp=sharing 
