@@ -2,6 +2,9 @@
 
 An extra-credit project I procrastinated for Stanford's CS109, Probability for Computer Scientists. Made in 11 hours. 
 
+Notion I made documenting using Firebase and Google Cloud Run with React.js and Flask and Docker explaining deploying a full-stack application, based on this assignment:
+https://legendary-bramble-8e5.notion.site/Deploying-a-Flask-Container-to-GC-Run-with-a-React-Frontend-on-Firebase-and-Docker-on-an-M1-Machine-8bb79bc0bcee4bebafa805a0e5c9c485?pvs=4
+
 Utilizes the logistic regression machine learning algorithm on a bunch of pitcher related data. Takes into account pitcher arm slot (release position), with a bunch of other happy things found here: 
 'release_speed', 'release_spin_rate', 'release_pos_x', 'release_pos_z', 
         'pfx_x', 'pfx_z', 'plate_x', 'plate_z', 'zone'

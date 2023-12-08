@@ -15,3 +15,10 @@ hit_probabilities = hit_counts / total_hits
 
 # Print the probabilities
 print(hit_probabilities)
+
+# events (results)
+# single       0.642503
+# double       0.224907
+# force_out    0.108736
+# triple       0.022924
+# home_run     0.000929

@@ -5,9 +5,15 @@ import pandas as pd
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import numpy as np
+import os
+
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {
+    "origins": ["http://localhost:3000", "https://pitch-to-contact.web.app"],
+    "supports_credentials": True
+}})
+
 
 hardcoded_thetas = [-0.75882234,  0.02802454, -0.02408761,  0.00108827, -0.02847524, -0.08562155,
  -0.21532068,  0.09516804, -0.13506167, -0.04805247, -0.14796846,  0.31359849,
@@ -157,9 +163,7 @@ def main():
 
     print_confusion_matrix(y_test, log_y_pred_test)
 
-
-
-@app.route('/predict-logistic', methods=['POST'])
+@app.route('/api/predict-logistic', methods=['POST'])
 def predict_logistic():
     data = request.json
     # Ensure correct mapping of features and one-hot encoding
@@ -181,11 +185,18 @@ def predict_logistic():
     ]).reshape(1, -1)
 
     prediction = predict(features, np.array(hardcoded_thetas))
-    print(prediction[0])
-    return jsonify({'prediction': prediction[0]})
+    response_data = {'prediction': prediction[0]}
+    response = jsonify(response_data)
+    # response.headers.add('Access-Control-Allow-Origin', 'https://pitch-to-contact.web.app')
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    return response
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)  # Run on a different port
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host='0.0.0.0', port=port, debug=False)
+
 
 # if __name__ == "__main__":
 #     main()

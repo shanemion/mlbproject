@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const PitchBallButton = ({
   results,
@@ -29,11 +29,11 @@ const PitchBallButton = ({
       zone,
       pitchType,
     };
-
+    // https://pitch-to-contact-lrdedg2qgq-uc.a.run.app
     // For logistic regression
     try {
       const logisticResponse = await fetch(
-        "http://localhost:5001/predict-logistic",
+        "/api/predict-logistic", 
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
