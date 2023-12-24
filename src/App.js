@@ -24,8 +24,9 @@ function App() {
   const [pfxX, setPfxX] = useState(0);
   const [pfxZ, setPfxZ] = useState(0);
   // const [results, setResults] = useState({ logistic: null, naiveBayes: null });
-  const [results, setResults] = useState(1);
+  const [results, setResults] = useState(-1);
   const [popupVisible, setPopupVisible] = useState(false);
+  const [change, setChange] = useState(0);
 
   const handleReleasePointUpdate = () => {
     // Assuming xpos, ypos, plateX, and plateZ are already set correctly
@@ -75,6 +76,8 @@ function App() {
         pitchType={pitchType}
         popupVisible={popupVisible}
         setPopupVisible={setPopupVisible}
+        change={change}
+        setChange={setChange}
       />
       <StrikeZoneSelector
         position={strikeZonePosition}
@@ -85,11 +88,10 @@ function App() {
       />
       <ArmComponent
         releasePoint={releasePoint}
-        setReleasePoint={setReleasePoint}
         pitchSpeed={pitchSpeed}
       />
       {/* <ResultPopup result={results.logistic} isVisible={popupVisible} closePopup={() => setPopupVisible(false)} /> */}
-      <ResultPopup result={results} />
+      <ResultPopup result={results} change={change}/>
     </div>
   );
 }

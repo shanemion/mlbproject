@@ -1,21 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
-const ResultPopup = ({ result }) => {
+const ResultPopup = ({ result, change }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [message, setMessage] = useState('');
+  const previousResultRef = useRef(2);
 
   useEffect(() => {
+    console.log("result", result)
+
     if (result !== null) {
+      if (result === -1) {
+        return;
+      }
+      const newMessage = result === 1 ? 'You gave up a hit :(' : 'You got them out!';
+      setMessage(newMessage);
+      console.log(newMessage)
       setIsVisible(true);
-      console.log(result)
-      console.log(result.prediction)
-      console.log(`Result is ${result.prediction}: ${result.prediction === 1 ? 'Hit' : 'Out'}`);
+
+      // Update the ref after state updates
+      previousResultRef.current = result;
+
+      // Hide the popup after 2 seconds
       setTimeout(() => {
-        setIsVisible(false); // Hide the popup after 2 seconds
+        setIsVisible(false);
       }, 2000);
     }
-  }, [result]);
+  }, [result, change]);
 
-  if (!isVisible) return null;
+  if (!isVisible) {
+    return null;
+  }
 
   return (
     <div style={{
@@ -39,7 +53,9 @@ const ResultPopup = ({ result }) => {
         border: '3px solid #d32f2f', // red border for a classic baseball stitching color
         lineHeight: '1.6', // line height for better text readability
       }}>
-      {result.prediction === 1 ? 'You gave up a hit :(' : 'YOU GOT THEM OUT!!!!'}
+      {/* {result.prediction === 1 ? 'You gave up a hit :(' : 'YOU GOT THEM OUT!!!!'} */}
+      {message}
+
     </div>
   );
 };

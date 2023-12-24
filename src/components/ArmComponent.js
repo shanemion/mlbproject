@@ -1,7 +1,18 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import manImage from "./man.png"; // Import the image
 
 const ArmComponent = ({ releasePoint, pitchSpeed }) => {
+  const [position, setPosition] = useState(releasePoint);
+
+  const transform = () => { 
+    setPosition(90 - releasePoint)
+  }
+
+  useEffect(() => {
+    transform();
+  }, [releasePoint]);
+
+
 
   // Function to determine the width of the arm based on pitchSpeed
   const getArmWidth = () => {
@@ -27,7 +38,7 @@ const ArmComponent = ({ releasePoint, pitchSpeed }) => {
             width: getArmWidth(),
             height: "140px",
             backgroundColor: "black",
-            transform: `rotate(${releasePoint}deg)`,
+            transform: `rotate(${position}deg)`,
             transformOrigin: "bottom",
             bottom: "-30%",
             left: "110%",
